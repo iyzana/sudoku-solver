@@ -6,8 +6,8 @@ use std::io::{self, prelude::*};
 use sudoku::Sudoku;
 
 fn main() {
-    // let sudoku = read_sudoku();
-    let sudoku = Sudoku::from(include_str!("./data/sudoku-evil-0.txt"));
+    let sudoku = read_sudoku();
+    // let sudoku = Sudoku::from(include_str!("./data/sudoku-evil-0.txt"));
     println!("{}", sudoku);
 
     if let Some(solution) = solve(&sudoku) {
