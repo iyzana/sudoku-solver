@@ -55,13 +55,9 @@ fn find_unfilled_cell(sudoku: &Sudoku) -> Option<(usize, usize, Vec<u8>)> {
 // find cells that only accept one number
 
 fn fill_cells(sudoku: &mut Sudoku) -> bool {
-    let unfilled_cells = (0..9)
-        .cartesian_product(0..9)
-        .filter(|(col, row)| sudoku[*row][*col] == 0)
-        .collect::<Vec<_>>();
-    unfilled_cells
-        .iter()
-        .any(|&(col, row)| fill_cell(col, row, sudoku))
+    (0..9).cartesian_product(0..9).any(|(col, row)| {
+        sudoku[row][col] == 0 && fill_cell(col, row, sudoku)
+    })
 }
 
 // if only one number is allowed in the cell write it
